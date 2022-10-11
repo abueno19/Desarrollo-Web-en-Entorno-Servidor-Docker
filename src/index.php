@@ -49,7 +49,22 @@ $ejercicios_array=array(
             array("act6"=>
             array("Titulo"=>"Actividad 6","Enlace"=>"./und3/tarea2/act6.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act6.php")),
             
-            )
+        ),
+        "tarea3"=>array(
+            array("act1"=>
+            array("Titulo"=>"Actividad 1","Enlace"=>"./und3/tarea3/act1.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act1.php")),
+            array("act2"=>
+            array("Titulo"=>"Actividad 2","Enlace"=>"./und3/tarea3/act2.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act2.php")),
+            array("act3"=>
+            array("Titulo"=>"Actividad 3","Enlace"=>"./und3/tarea3/act3.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act3.php")),
+            array("act4"=>
+            array("Titulo"=>"Actividad 4","Enlace"=>"./und3/tarea3/act4.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act4.php")),
+            array("act5"=>
+            array("Titulo"=>"Actividad 5","Enlace"=>"./und3/tarea3/act5.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act5.php")),
+            array("act6"=>
+            array("Titulo"=>"Actividad 6","Enlace"=>"./und3/tarea3/act6.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act6.php")),
+            
+        )
     
     ),
     ),

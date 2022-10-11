@@ -12,6 +12,7 @@ $año = $fecha['year'];
 $diaSemana = $fecha['wday'];
 $diaSemana = $dias[$diaSemana - 1];
 $mes = $meses[$mes - 1];
+#$Week = date("N", mktime(0, 0, 0, date("n"), 1, date("Y"))) - 1;
 $Week = date("N", mktime(0, 0, 0, date("n"), 1, date("Y"))) - 1; //Devuelve el número del día de la semana del primer día del mes
 $contador = 7;
 #QUe dias es hoy el primero del mes
@@ -31,7 +32,7 @@ $festivos = array(
         "Julio" => array(25),
         "Agosto" => array(15),
         "Septiembre" => array(8),
-        "Octubre" => array(12, 24),
+        "Octubre" => array( 24),
         "Noviembre" => array(1),
         "Diciembre" => array(6, 8, 25)
     ),
@@ -137,21 +138,11 @@ echo ("<a href='https://github.com/abueno19/Und3_tarea1_DWES/blob/main/src/und3/
         background-color: #FFA500;
     }
     .tabla{
-
-        /* centrar tabla  en medio de la vista*/
         margin: auto;
-        /* centrarlo*/
-        
         top: auto;
         left: auto;
         bottom: auto;
         right: auto;
-
-
-
-
-
-
     }
 
     .imagen{
