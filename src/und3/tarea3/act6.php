@@ -1,5 +1,9 @@
 <?php
 #Tablas de multiplicar del 1 al 10.
+/**
+ * @author abueno
+ */
+$correctas=0;
 if(!$_POST){
     TablasDEMultiplicar1_10_en_una_sola_tabla();
 }
@@ -7,8 +11,12 @@ else{
     foreach($_POST as $key => $value){
         if($key!=$value){
             echo("<p>Has puesto $value pero es $key</p>");
+        }else{
+            $correctas++;
         }
     }
+    echo("El numero de respuestas correctas es $correctas");
+    echo("<br>");
 }
 echo("<style>table,th,td{border: 1px solid black;}</style>");
 echo("<style>table{width: 100%;}</style>");
@@ -55,5 +63,5 @@ function TablasDEMultiplicar1_10_en_una_sola_tabla (){
 
 
 
-echo("<a href='https://github.com/abueno19/Und3_tarea1_DWES/blob/main/Tarea2/act3/index.php'>Github</a>");
+echo("<a href='https://github.com/abueno19/Und3_tarea1_DWES/blob/main/src/und3/tarea3/act6.php'>Github</a>");
 ?>
