@@ -7,7 +7,21 @@ $correctas = array();
 $incorrectas = array();
 $post = $_POST;
 $respuesta = isset($post['enviar']);
+/**
+ * Comprobamos que se ha enviado el formulario
+ * y que esta correcto el resultado 
+ * separamos la key por la x y comprobamos que el resultado es correcto
+ */
+if ($respuesta){
 
+    foreach ($post as $key => $value) {
+        if ((( (int) explode("x",$key)[0] * (int)explode("x",$key)[1])) != $value) {
+            array_push($incorrectas, $key);
+        } else {
+            array_push($correctas, $key);
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,19 +36,6 @@ $respuesta = isset($post['enviar']);
 
 <body>
     <?php
-
-    
-
-    if ($respuesta){
-
-        foreach ($post as $key => $value) {
-            if ((( (int) explode("x",$key)[0] * (int)explode("x",$key)[1])) != $value) {
-                array_push($incorrectas, $key);
-            } else {
-                array_push($correctas, $key);
-            }
-        }
-    }
     $primeraTabla = 1;
     echo ("<table class='tabla'>");
     $contador = 2;
