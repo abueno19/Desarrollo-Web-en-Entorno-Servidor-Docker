@@ -1,7 +1,7 @@
 <?php
 #Tablas de multiplicar del 1 al 10.
 /**
- * @author abueno
+ * @author abueno19
  */
 $correctas = array();
 $incorrectas = array();
