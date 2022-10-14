@@ -77,29 +77,29 @@ $ejercicios_array=array(
 // print_r($files);
 // echo "<br>";
 // recoger los archivos .php
-echo("<div class='head'>");
-$files = glob('./und*/*/*.php');
+// echo("<div class='head'>");
+// $files = glob('./und*/*/*.php');
 
-foreach ( $files as $file){
-    $prueba = str_replace("./","",$file);
-    $prueba = str_replace(".php","",$prueba);
-    #añadir a la array
-    $prueba = explode("/",$prueba);
-    array_push($array_p,(array($prueba[0]=>array($prueba[1]=>$prueba[2]))));
+// foreach ( $files as $file){
+//     $prueba = str_replace("./","",$file);
+//     $prueba = str_replace(".php","",$prueba);
+//     #añadir a la array
+//     $prueba = explode("/",$prueba);
+//     array_push($array_p,(array($prueba[0]=>array($prueba[1]=>$prueba[2]))));
     
-    echo "<br>";
-}
-/* ver tipo de variable*/
+//     echo "<br>";
+// }
+// /* ver tipo de variable*/
 
-print_r($array_p);
-echo "<br>";
-if (@file_get_contents(JSON)) {
-    $json = file_get_contents(JSON);
-    $json = json_decode($json, true);
-    print_r($json["squadName"]);
-} else {
-    echo "No se ha encontrado el archivo";
-}
+// print_r($array_p);
+// echo "<br>";
+// if (@file_get_contents(JSON)) {
+//     $json = file_get_contents(JSON);
+//     $json = json_decode($json, true);
+//     print_r($json["squadName"]);
+// } else {
+//     echo "No se ha encontrado el archivo";
+// }
 
 
 

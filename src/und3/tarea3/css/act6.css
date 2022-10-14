@@ -1,0 +1,30 @@
+.mal{
+    color: red;
+}
+.bien{
+    color: green;
+}
+.tabla{
+/*
+*
+Tabla bonita
+*/
+    border: 1px solid black;
+    border-collapse: collapse;
+    height: auto;
+    width: 100%;
+
+
+}
+td{
+    border: 1px solid black;
+
+    
+}
+tr{
+    border: 1px solid black;
+    border-collapse: separate;
+    height: auto;
+    width: 100%;
+    
+}
