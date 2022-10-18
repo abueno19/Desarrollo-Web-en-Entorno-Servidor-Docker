@@ -63,11 +63,23 @@ $ejercicios_array=array(
             array("Titulo"=>"Actividad 5","Enlace"=>"./und3/tarea3/act5.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act5.php")),
             array("act6"=>
             array("Titulo"=>"Actividad 6","Enlace"=>"./und3/tarea3/act6.php","Descripcion"=>"Tabla de multiplicar retocado","Archivo"=>"act6.php")),
-
+            array("act7"=>
+            array("Titulo"=>"Actividad 7","Enlace"=>"./und3/tarea3/act7.php","Descripcion"=>"Calendario retocado","Archivo"=>"act7.php")),
+        )
+        
+    
+    ),
+    "und4"=>array(
+        "tarea1"=>array(
+            array("act1"=>
+            array("Titulo"=>"Actividad 1","Enlace"=>"./und4/tarea1/act1.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act1.php")),
+            array("act2"=>
+            array("Titulo"=>"Actividad 2","Enlace"=>"./und4/tarea1/act2.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act2.php")),
         )
     
     ),
     ),
+    
 );
 // Crea el array de archivos como se muestra en el ejemplo de forma automatica
 // $files = array();

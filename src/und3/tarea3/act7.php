@@ -13,8 +13,27 @@ $año = $fecha['year'];
 $diaSemana = $fecha['wday'];
 $diaSemana = $dias[$diaSemana - 1];
 $mes = $meses[$mes - 1];
+function mes_indexado($mes_selecionado,$meses){
+    for ($i = 0; $i < count($meses); $i++) {
+        if ($meses[$i] == $mes_selecionado) {
+            return ($i+1);
+        }
+    }
+}
+
+
+
+
 #$Week = date("N", mktime(0, 0, 0, date("n"), 1, date("Y"))) - 1;
-$Week = date("N", mktime(0, 0, 0, date("n"), 1, date("Y"))) - 1; //Devuelve el número del día de la semana del primer día del mes
+if (isset($_POST['enviar'])){
+    if (!$_POST['move']){
+        $Week = date("N", mktime(0, 0, 0, date(mes_indexado($_POST["mes"],$meses))), 1, date("Y")) - 1; //Devuelve el número del día de la semana del primer día del mes
+
+    }else{
+        $Week = date("N", mktime(0, 0, 0, date(mes_indexado($_POST["mes"],$meses)+$_POST['move']), 1, date("Y")) - 1); //Devuelve el número del día de la semana del primer día del mes
+    }
+}
+
 $contador = 7;
 #QUe dias es hoy el primero del mes
 $diaSemana = $fecha['wday'];
@@ -100,9 +119,7 @@ for ($i = 1; $i <= date('t'); $i++) {
 
 echo "</tr>";
 echo "</table>";
-echo ("<body>");
 
-echo ("<body>");
 
 function VerSiUnElementoEstaEnUnArray($elemento, $array)
 {

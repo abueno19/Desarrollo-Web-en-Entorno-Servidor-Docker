@@ -39,15 +39,23 @@ if ($respuesta){
     $primeraTabla = 1;
     echo ("<table class='tabla'>");
     $contador = 2;
+    echo ("<form method='post'>");
     for ($i = 1; $i <= 10; $i++) {
         echo ("<tr>");
         echo ("<td>");
-        echo ($i);
+        if($i == 1){
+            echo ("x");
+        }else{
+            echo ($i);
+        }
+        
         echo ("</td>");
-        echo ("<form method='post'>");
+        
         for ($j = 1; $j <= 10; $j++) {
             echo ("<td>");
+  
             if (rand(1, 3) == 1 && $contador != 0 && !$respuesta && $primeraTabla != 1) {
+                // echo ("<input name=campo[".$i."][".$j."]>");
                 echo ("<input name=".$i.'x'.$j. ">");
                 $contador -= 1;
             } else {
@@ -67,9 +75,13 @@ if ($respuesta){
         $contador = 2;
         echo ("</tr>");
     }
+    
 
     echo ("</table>");
     echo ("<input type='submit' value='enviar' name='enviar'>");
+    echo ("<br>");
+    echo("</form>");
+    echo ("<button onClick='window.location.reload();'>Refresh Page</button>");
     echo ("<br>");
     echo ("<a href='https://github.com/abueno19/Und3_tarea1_DWES/blob/main/src/und3/tarea3/act6.php'>Github</a>");
 
