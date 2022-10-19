@@ -69,16 +69,24 @@ $ejercicios_array=array(
         
     
     ),
-    "und4"=>array(
+    ),
+
+    array("und4"=>array(
         "tarea1"=>array(
             array("act1"=>
             array("Titulo"=>"Actividad 1","Enlace"=>"./und4/tarea1/act1.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act1.php")),
             array("act2"=>
             array("Titulo"=>"Actividad 2","Enlace"=>"./und4/tarea1/act2.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act2.php")),
+            array("act3"=>
+            array("Titulo"=>"Actividad 3","Enlace"=>"./und4/tarea1/act3.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act3.php")),
+            
         )
+    )
+    )
+
     
-    ),
-    ),
+    
+    
     
 );
 // Crea el array de archivos como se muestra en el ejemplo de forma automatica
