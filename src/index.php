@@ -78,11 +78,26 @@ $ejercicios_array=array(
             array("act2"=>
             array("Titulo"=>"Actividad 2","Enlace"=>"./und4/tarea1/act2.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act2.php")),
             array("act3"=>
-            array("Titulo"=>"Actividad 3","Enlace"=>"./und4/tarea1/act3.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act3.php")),
-            
-        )
-    )
-    )
+            array("Titulo"=>"Actividad 3","Enlace"=>"./und4/tarea1/act3.php","Descripcion"=>"Formulraio cookies","Archivo"=>"act3.php")),
+            array("act4"=>
+            array("Titulo"=>"Actividad 4","Enlace"=>"./und4/tarea1/act4.php","Descripcion"=>"Formulario cookies","Archivo"=>"act4.php")),
+            array("act5"=>
+            array("Titulo"=>"Actividad 5","Enlace"=>"./und4/tarea1/act5.php","Descripcion"=>"Pruebas de sesiones","Archivo"=>"act5.php")),
+            array("act6"=>
+            array("Titulo"=>"Actividad 6","Enlace"=>"./und4/tarea1/act6.php","Descripcion"=>"Practicas de formulario","Archivo"=>"act6.php")),
+        ),
+        "tarea2"=>array(
+            array("act1"=>
+            array("Titulo"=>"Actividad 1","Enlace"=>"./und4/tarea2/act1.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act1.php")),
+            array("act2"=>
+            array("Titulo"=>"Actividad 2","Enlace"=>"./und4/tarea2/act2.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act2.php")),
+            array("prueba"=>
+            array("Titulo"=>"Prueba de clases","Enlace"=>"./und4/tarea2/prueba.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act3.php")),
+            array("act3"=>
+            array("Titulo"=>"Actividad 3","Enlace"=>"./und4/tarea2/act3.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act3.php")),
+            )
+        ),
+    ),
 
     
     
