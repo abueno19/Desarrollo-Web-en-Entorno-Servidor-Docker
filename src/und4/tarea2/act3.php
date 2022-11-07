@@ -5,6 +5,11 @@ class Contador{
     public function __construct(){
         self::$contador++;
     }
+    // Funcion que incrementa el contador
+    public static function incrementar(){
+        self::$contador++;
+    }
+    
     public static function getContador(){
         return self::$contador;
     }
