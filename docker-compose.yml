@@ -10,14 +10,14 @@ services:
       - ./src:/var/www/html/
 
   php:
-    image: php:7.0-fpm
+    build: ./php/
     container_name: php-container
     expose:
       - 9000
     volumes:
       - ./src:/var/www/html/
   app-data:    
-    image: php:7.0-fpm  
+    build: ./php/
     container_name: app-data-container  
     volumes:  
       - ./src:/var/www/html/  

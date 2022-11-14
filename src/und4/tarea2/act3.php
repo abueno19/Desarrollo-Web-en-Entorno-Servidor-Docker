@@ -9,7 +9,7 @@ class Contador{
     public static function incrementar(){
         self::$contador++;
     }
-    
+
     public static function getContador(){
         return self::$contador;
     }
@@ -18,6 +18,8 @@ class Contador{
 echo("Creando contador1");
 echo("<br>");
 $contador1 = new Contador();
+$contado1::incrementar();
+echo("El contador vale: ".Contador::getContador());
 echo("Creando contador2");
 echo("<br>");
 $contador2 = new Contador();

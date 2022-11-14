@@ -95,6 +95,10 @@ $ejercicios_array=array(
             array("Titulo"=>"Prueba de clases","Enlace"=>"./und4/tarea2/prueba.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act3.php")),
             array("act3"=>
             array("Titulo"=>"Actividad 3","Enlace"=>"./und4/tarea2/act3.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act3.php")),
+            array("act4"=>
+            array("Titulo"=>"Actividad 4","Enlace"=>"./und4/mascotas/index.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act4.php")),
+            array("act5"=>
+            array("Titulo"=>"Buscaminas","Enlace"=>"./und4/buscaminas/index.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act5.php")),
             )
         ),
     ),
