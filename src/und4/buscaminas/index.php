@@ -74,7 +74,7 @@ if (isset($_POST['fila']) && isset($_POST['columna'])) {
         echo "<tr>";
         for ($j = 0; $j < 10; $j++) {
             echo "<td>";
-            if ($_SESSION['vista'][$i][$j] == 0 && $_SESSION['estado'] != "perdido") {
+            if ($_SESSION['vista'][$i][$j] == 0 && !isset($_SESSION['estado'])) {
                 // No se ha pulsado
                 echo "<form action='index.php' method='post'>";
                 echo "<input type='hidden' name='fila' value='$i'>";
