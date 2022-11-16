@@ -20,6 +20,7 @@ if (!isset($_SESSION['tablero'])) {
 
 // Vamos a comprobar si se ha pulsado un boton
 if (isset($_POST['fila']) && isset($_POST['columna'])) {
+    
     // Se ha pulsado un boton
     // Comprobamos si hay una mina
     if ($_SESSION['tablero'][$_POST['fila']][$_POST['columna']] == 9) {
@@ -32,7 +33,7 @@ if (isset($_POST['fila']) && isset($_POST['columna'])) {
         // No hay una mina
         // Mostramos el valor
         if($_SESSION['tablero'][$_POST['fila']][$_POST['columna']] == 0){
-            $_SESSION['vista'][$_POST['fila']][$_POST['columna']] = -1;
+            $_SESSION['vista'] = expandir($_SESSION['tablero'], $_POST['fila'], $_POST['columna'],$_SESSION['vista']);
         }else{
 
             $_SESSION['vista'][$_POST['fila']][$_POST['columna']] = $_SESSION['tablero'][$_POST['fila']][$_POST['columna']];

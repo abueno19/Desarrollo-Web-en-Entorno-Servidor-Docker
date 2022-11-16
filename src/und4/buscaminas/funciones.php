@@ -106,5 +106,33 @@ function crear_tablero($filas, $columnas, $minas)
     }
     return $tablero;
 }
+function expandir($tablero, $fila, $columna,$vista)
+{
+    // En esta funcion vamos a expandir las casillas de vista teniendo tablero como referencia
+    // Si fila y columna es 0 exapndimos la casilla
+    if ($fila >= 0 && $columna >= 0 && $fila < count($tablero) && $columna < count($tablero[0])) {
+        if ($vista[$fila][$columna] == 0) {
+            if($tablero[$fila][$columna] != 9 && $tablero[$fila][$columna] != 0){
+                $vista[$fila][$columna] = $tablero[$fila][$columna];
+            }else{
+                $vista[$fila][$columna] = -1;
+            }
+            if ($tablero[$fila][$columna] == 0 && $vista[$fila][$columna] == -1) {
+                $vista = expandir($tablero, $fila - 1, $columna - 1, $vista);
+                $vista = expandir($tablero, $fila - 1, $columna, $vista);
+                $vista = expandir($tablero, $fila - 1, $columna + 1, $vista);
+                $vista = expandir($tablero, $fila, $columna - 1, $vista);
+                $vista = expandir($tablero, $fila, $columna + 1, $vista);
+                $vista = expandir($tablero, $fila + 1, $columna - 1, $vista);
+                $vista = expandir($tablero, $fila + 1, $columna, $vista);
+                $vista = expandir($tablero, $fila + 1, $columna + 1, $vista);
+            }
+        }
+    }
+    return $vista;
 
+
+
+    
+}
 ?>
