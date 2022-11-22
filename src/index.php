@@ -99,6 +99,10 @@ $ejercicios_array=array(
             array("Titulo"=>"Actividad 4","Enlace"=>"./und4/mascotas/index.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act4.php")),
             array("act5"=>
             array("Titulo"=>"Buscaminas","Enlace"=>"./und4/buscaminas/index.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act5.php")),
+            array("act6"=>
+            array("Titulo"=>"Examen_und1_con_sesiones","Enlace"=>"./und4/examen_und1_con_sesiones/index.php","Descripcion"=>"Mostrar por pantalla la suma de dos números","Archivo"=>"act6.php")),
+            array("act7"=>
+            array("Titulo"=>"Practicas con base de datos","Enlace"=>"./und4/practica_db/index.php","Descripcion"=>"Practica db","Archivo"=>"act7.php")),
             )
         ),
     ),
