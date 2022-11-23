@@ -13,7 +13,8 @@ try{
 }catch(PDOException $e){
     echo $e->getMessage();
 }
-    
+// Redirigimos a la pagina de equipos
+header("Location: index.php");
     
 
 ?>

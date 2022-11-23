@@ -11,10 +11,22 @@ $conexion->exec("CREATE TABLE IF NOT EXISTS equipos(
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )");
 
+if (isset($_POST["accion"])) {
+    // Vamos a añadir los datos a la base de datos
+    $nombre_equipo = $_POST["nombre_equipo"];
+    $descripcion = $_POST["descripcion"];
+    // camprobamos que no hay inyeccion sql
+    $nombre_equipo = $conexion->quote($nombre_equipo);
+    $descripcion = $conexion->quote($descripcion);
+    $conexion->exec("INSERT INTO equipos (nombre_equipo, descripcion) VALUES ($nombre_equipo, $descripcion)");
+    
+
+}
+
+// Vamos a mostrar los equipos que hay en la base de datos los 10 primeros
+$consulta = $conexion->query("SELECT * FROM equipos LIMIT 10");
 
 
-// Vamos a mostrar los equipos que hay en la base de datos
-$consulta = $conexion->query("SELECT * FROM equipos");
 
 
 
@@ -32,6 +44,17 @@ $consulta = $conexion->query("SELECT * FROM equipos");
 <body>
     <?php
     // Vamos a mostrar los equipos que hay en la base de datos ademas de dar opciones de añadir ,modificar y borrar
+
+    // Vamos a crear un formulario para añadir equipos
+    echo "<h2>Añadir Equipo</h2>";
+    echo "<form  method='POST'>";
+    echo "<input type='text' name='nombre_equipo' placeholder='Nombre equipo'>";
+    echo "<input type='text' name='descripcion' placeholder='Descripcion'>";
+    echo "<input type='submit' name='accion' value='add'>";
+    echo "</form>";
+    echo "<br>";
+    echo "<br>";
+    echo "<br>";
 
     while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
         // Vamos a mostrar los equipos en una tabla
@@ -52,24 +75,11 @@ $consulta = $conexion->query("SELECT * FROM equipos");
         echo "</tr>";
         echo "</table>";
     }
-    // Vamos a crear un formulario para añadir equipos
-    echo "<h2>Añadir Equipo</h2>";
-    echo "<form  method='POST'>";
-    echo "<input type='text' name='nombre_equipo' placeholder='Nombre equipo'>";
-    echo "<input type='text' name='descripcion' placeholder='Descripcion'>";
-    echo "<input type='submit' name='accion' value='añadir'>";
-    echo "</form>";
 
 
 
     // Vamos a comprobar si se ha pulsado el boton añadir
-    if (isset($_POST["accion"]) && $_POST["accion"] == "añadir") {
-        // Vamos a añadir los datos a la base de datos
-        $consulta = $conexion->prepare("INSERT INTO equipos (nombre_equipo,descripcion) VALUES (:nombre_equipo,:descripcion)");
-        $consulta->bindParam(":nombre_equipo", $_POST["nombre_equipo"]);
-        $consulta->bindParam(":descripcion", $_POST["descripcion"]);
-        $consulta->execute();
-    }
+    
 
     
 
