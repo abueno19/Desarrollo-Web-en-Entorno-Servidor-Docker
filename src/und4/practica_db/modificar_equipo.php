@@ -1,22 +1,22 @@
 <?php
-include 'lib.php';
-include 'config.php';
+include 'lib/lib.php';
+include 'config/config.php';
 // vamos a recoger el metodo get de la url que es id
 $conexion = conexion($host, $user, $password, $database);
 $id = $_GET['id'];
-$consulta = $conexion->query("SELECT * FROM equipos WHERE id = $id");
-$equipo = $consulta->fetch(PDO::FETCH_ASSOC);
+
 if (isset($_POST['accion'])) {
     try{
-        $nombre_equipo = $_POST['nombre_equipo'];
-        $descripcion = $_POST['descripcion'];
-        $conexion->exec("UPDATE equipos SET nombre_equipo='$nombre_equipo', descripcion='$descripcion' WHERE id=$id");
+        update_equipo($conexion, $id, $_POST['nombre_equipo'], $_POST['descripcion']);
+        header("Location: index.php");
     }catch(PDOException $e){
         echo $e->getMessage();
     }
     
     
 }
+// vamos a buscar el equipo por la id que nos llega por GET
+
 
 
 ?>
