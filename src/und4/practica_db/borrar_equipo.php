@@ -2,19 +2,16 @@
 include 'lib/lib.php';
 include 'config/config.php';
 // vamos a borrar el equipo por la id que nos llega por GET
-$conexion = conexion($host, $user, $password, $database);
-$id = $_GET['id'];
-$consulta = $conexion->query("SELECT * FROM equipos WHERE id = $id");
-$equipo = $consulta->fetch(PDO::FETCH_ASSOC);
-
-try{
-    $conexion->exec("DELETE FROM equipos WHERE id=$id");
-    header("Location: index.php");
-}catch(PDOException $e){
-    echo $e->getMessage();
+$conexion=conexion(HOST, USER, PASSWORD, DATABASE);
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $borrar_equipo = delete_equipo($conexion, $id);
+    if ($borrar_equipo) {
+        header("Location: index.php");
+    } else {
+        echo "Error al borrar el equipo";
+    }
 }
-// Redirigimos a la pagina de equipos
-header("Location: index.php");
     
 
 ?>

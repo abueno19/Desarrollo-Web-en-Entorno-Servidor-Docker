@@ -12,38 +12,18 @@ $conexion->exec("CREATE TABLE IF NOT EXISTS equipos(
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )");
 
-if (isset($_POST["add"])) {
-    // Vamos a añadir los datos a la base de datos con consulta preparada
-    $nombre_equipo = $_POST["nombre_equipo"];
-    $descripcion = $_POST["descripcion"];
-    // camprobamos que no hay inyeccion sql
-    $consulta = $conexion->prepare("INSERT INTO equipos (nombre_equipo, descripcion) VALUES (:nombre_equipo, :descripcion)");
-    $consulta->bindParam(':nombre_equipo', $nombre_equipo);
-    $consulta->bindParam(':descripcion', $descripcion);
-    $consulta->execute();
-    $consulta = $conexion->prepare("SELECT * FROM equipos LIMIT 10");
+// Vamos a añadir equipos a la base de datos
 
+if (isset($_POST['search'])) {
+    $search = $_POST['search'];
+    $equipos = search_equipo($conexion, $search);
+    
+} else {
+    $equipos = get_equipos($conexion,20);
+    
+
+    
 }
-// Vamos a buscar los datos de la base de datos el post recibido va a ser con consulta preparada
-if (isset($_POST["search"])) {
-    if($_POST["search"] != ""){
-        $search = $_POST["search"]."%";
-        $consulta = $conexion->prepare("SELECT * from equipos where nombre_equipo like :search");
-        $consulta->bindParam(':search', $search);
-        
-
-        
-    }else{
-        $consulta = $conexion->prepare("SELECT * FROM equipos LIMIT 10");
-
-    }
-
-}
-if (!$consulta){
-    $consulta = $conexion->prepare("SELECT * FROM equipos LIMIT 10");
-}
-$consulta->execute();
-
 
 
 
@@ -63,22 +43,14 @@ $consulta->execute();
     <?php
     // Vamos a mostrar los equipos que hay en la base de datos ademas de dar opciones de añadir ,modificar y borrar
 
-    // Vamos a crear un formulario para añadir equipos
-    echo "<h2>ADD Equipo</h2>";
-    echo "<form  method='POST'>";
-    echo "<input type='text' name='nombre_equipo' placeholder='Nombre equipo'>";
-    echo "<input type='text' name='descripcion' placeholder='Descripcion'>";
-    echo "<input type='submit' name='add' value='add'>";
-    echo "</form>";
-    echo "<br>";
-    echo "<br>";
-    echo "<br>";
     // Vamos a buscar por equipo
     echo "<h2>Buscar Equipo</h2>";
     echo "<form  method='POST'>";
     echo "<input type='text' name='search' placeholder='Buscar Equipo'>";
     echo "<input type='submit'  value='search'>";
     echo "</form>";
+    // Vamos a crear un enlace con forma de boton para añadir un equipo
+    echo "<a href='add.php'><button>Añadir Equipo</button></a>";
     echo "<br>";
     echo "<br>";
     echo "<br>";
@@ -92,14 +64,14 @@ $consulta->execute();
     echo "<th>Modificar</th>";
     echo "<th>Borrar</th>";
     echo "</tr>";
-    while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
+    foreach ($equipos as $equipo) {
         // Vamos a mostrar los equipos en una tabla
         echo "<tr>";
-        echo "<td>" . $fila["nombre_equipo"] . "</td>";
-        echo "<td>" . $fila["descripcion"] . "</td>";
-        echo "<td>" . $fila["fecha_creacion"] . "</td>";
-        echo "<td><a href='modificar_equipo.php?id=" . $fila["id"] . "'>Modificar</a></td>";
-        echo "<td><a href='borrar_equipo.php?id=" . $fila["id"] . "'>Borrar</a></td>";
+        echo "<td>" . $equipo["nombre_equipo"] . "</td>";
+        echo "<td>" . $equipo["descripcion"] . "</td>";
+        echo "<td>" . $equipo["fecha_creacion"] . "</td>";
+        echo "<td><a href='modificar_equipo.php?id=" . $equipo["id"] . "'>Modificar</a></td>";
+        echo "<td><a href='borrar_equipo.php?id=" . $equipo["id"] . "'>Borrar</a></td>";
     }
     echo "</tr>";
     echo "</table>";

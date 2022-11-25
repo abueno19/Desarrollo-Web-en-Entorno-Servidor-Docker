@@ -2,23 +2,22 @@
 include 'lib/lib.php';
 include 'config/config.php';
 // vamos a recoger el metodo get de la url que es id
-$conexion = conexion($host, $user, $password, $database);
-$id = $_GET['id'];
-
-if (isset($_POST['accion'])) {
-    try{
-        update_equipo($conexion, $id, $_POST['nombre_equipo'], $_POST['descripcion']);
-        header("Location: index.php");
-    }catch(PDOException $e){
-        echo $e->getMessage();
-    }
-    
-    
+$conexion=conexion(HOST, USER, PASSWORD, DATABASE);
+if(isset($_GET['id'])){
+    $id=$_GET['id'];
+    $equipo=search_equipo($conexion,$id);
 }
-// vamos a buscar el equipo por la id que nos llega por GET
 
-
-
+if (isset($_POST['modificar'])) {
+    $nombre_equipo = $_POST['nombre_equipo'];
+    $descripcion = $_POST['descripcion'];
+    $modificar_equipo = update_equipo($conexion, $id, $nombre_equipo, $descripcion);
+    if ($modificar_equipo) {
+        header("Location: index.php");
+    } else {
+        echo "Error al modificar el equipo";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -30,16 +29,17 @@ if (isset($_POST['accion'])) {
     </head>
     <body>
     <?php
-        // Vamos a mostrar un menu capaz de modificar el equipo con esa id  si es get
-        if (!isset($_POST['accion'])) {
-            echo "<h2>Modificar Equipo</h2>";
-            echo "<form action='modificar_equipo.php?id=$id' method='POST'>";
-            echo "<input type='text' name='nombre_equipo' placeholder='Nombre equipo' value='".$equipo['nombre_equipo']."'>";
-            echo "<input type='text' name='descripcion' placeholder='Descripcion' value='".$equipo['descripcion']."'>";
-            echo "<input type='submit' name='accion' value='modificar'>";
-            echo "</form>";
-        }
-
+    // Vamos a mostrar un menu para modificar un equipo
+    echo "<h2>Modificar Equipo</h2>";
+    echo "<form  method='POST'>";
+    echo "<input type='text' name='nombre_equipo' value='".$equipo['nombre_equipo']."'>";
+    echo "<input type='text' name='descripcion' value='".$equipo['descripcion']."'>";
+    echo "<input type='hidden' name='id' value='".$equipo['id']."'>";
+    echo "<input type='submit' name='modificar' value='modificar'>";
+    echo "</form>";
+    echo "<br>";
+    echo "<br>";
+    echo "<br>";
     ?>
     </body>
 </html>

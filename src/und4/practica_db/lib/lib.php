@@ -28,28 +28,34 @@ function add_equipo($conexion, $nombre_equipo, $descripcion) {
     // 2. Devolver la variable $consulta
     return $consulta->execute();
 }
-function search_equipo($conexion, $search) {
+function search_equipo($conexion, $id) {
     // Vamos a buscar un equipo en la base de datos
     // 1. Crear una variable que se llame $consulta y que sea igual a mysqli_query()
     //    con la consulta para buscar un equipo
-    if($search != ""){
-        $search = $search."%";
-        $consulta = $conexion->prepare("SELECT * from equipos where nombre_equipo like :search");
-        $consulta->bindParam(':search', $search);
+    if($id != ""){
+        
+        $consulta = $conexion->prepare("SELECT * from equipos where id like :search");
+        $consulta->bindParam(':search', $id);
     }else{
         $consulta = $conexion->prepare("SELECT * FROM equipos LIMIT 10");
     }
+    $consulta->execute();
     // 2. Devolver la variable $consulta
-    return $consulta;
+    return $consulta->fetchAll()[0];
 }
-function get_equipos($conexion) {
+function get_equipos($conexion, $limit = 10) {
     // Vamos a buscar los equipos en la base de datos
     // 1. Crear una variable que se llame $consulta y que sea igual a mysqli_query()
     //    con la consulta para buscar los equipos
-    $consulta = $conexion->prepare("SELECT * FROM equipos LIMIT 10");
-    // 2. Devolver la variable $consulta
-    return $consulta;
+    $consulta = $conexion->prepare("SELECT * FROM equipos");
+    $consulta->execute();
+    
+    return $consulta->fetchAll();
+    
+
 }
+    
+
 function update_equipo($conexion, $id, $nombre_equipo, $descripcion) {
     // Vamos a actualizar un equipo en la base de datos
     // 1. Crear una variable que se llame $consulta y que sea igual a mysqli_query()
