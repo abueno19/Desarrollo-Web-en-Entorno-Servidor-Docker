@@ -1,6 +1,10 @@
 <?php
 include 'lib/lib.php';
 include 'config/config.php';
+// iniciamos sesion si no esta ya creada
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 $conexion = conexion(HOST, USER, PASSWORD, DATABASE);
 // Vamos a crear las colunmas nombre_equipo
@@ -11,15 +15,26 @@ $conexion->exec("CREATE TABLE IF NOT EXISTS equipos(
     descripcion VARCHAR(30) NOT NULL,
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )");
+// vamos a crear las columnas de los usuarios
+$conexion->exec("CREATE TABLE IF NOT EXISTS usuarios(
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user VARCHAR(30) NOT NULL UNIQUE,
+    password VARCHAR(30) NOT NULL,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    )");
 
-// Vamos a añadir equipos a la base de datos
+
+// Vamos a crear el usuario admin
+
+
+
 
 if (isset($_POST['search'])) {
     $search = $_POST['search'];
-    $equipos = search_equipo($conexion, $search);
+    $equipos = getEquiposById($conexion, $search);
     
 } else {
-    $equipos = get_equipos($conexion,20);
+    $equipos = getEquipos($conexion,20);
     
 
     
@@ -33,16 +48,17 @@ if (isset($_POST['search'])) {
 <html lang="en">
 
 <head>
-    <title></title>
+    <title>Antonio Julian Buneno Fuentes</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
+    <h1></h1>
     <?php
     // Vamos a mostrar los equipos que hay en la base de datos ademas de dar opciones de añadir ,modificar y borrar
-
+    
     // Vamos a buscar por equipo
     echo "<h2>Buscar Equipo</h2>";
     echo "<form  method='POST'>";

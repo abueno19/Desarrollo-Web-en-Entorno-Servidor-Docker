@@ -2,6 +2,14 @@
 // Vamos a crear una funcion para que nos devuelva la conexion a la base de datos
 //
 // 1. Crear una funcion que se llame conectar()
+/*
+    * @param $host
+    * @param $user
+    * @param $password
+    * @param $database
+    * @return $conexion
+*/
+
 function conexion($host, $user, $password, $database) {
     // 2. Crear una variable que se llame $conexion y que sea igual a mysqli_connect()
     //    con los parametros de la conexion a la base de datos con pdo
@@ -18,22 +26,22 @@ function conexion($host, $user, $password, $database) {
     }
     return $conexion;
 }
-function add_equipo($conexion, $nombre_equipo, $descripcion) {
+
+function addEquipo($conexion, $data) {
     // Vamos a añadir un equipo a la base de datos
     // 1. Crear una variable que se llame $consulta y que sea igual a mysqli_query()
     //    con la consulta para insertar un equipo
     $consulta = $conexion->prepare("INSERT INTO equipos (nombre_equipo, descripcion) VALUES (:nombre_equipo, :descripcion)");
-    $consulta->bindParam(':nombre_equipo', $nombre_equipo);
-    $consulta->bindParam(':descripcion', $descripcion);
+    $consulta->bindParam(':nombre_equipo', $data['nombre_equipo']);
+    $consulta->bindParam(':descripcion', $data['descripcion']);
     // 2. Devolver la variable $consulta
     return $consulta->execute();
 }
-function search_equipo($conexion, $id) {
+function getEquiposById($conexion, $id=false) {
     // Vamos a buscar un equipo en la base de datos
     // 1. Crear una variable que se llame $consulta y que sea igual a mysqli_query()
     //    con la consulta para buscar un equipo
-    if($id != ""){
-        
+    if($id){
         $consulta = $conexion->prepare("SELECT * from equipos where id like :search");
         $consulta->bindParam(':search', $id);
     }else{
@@ -43,7 +51,7 @@ function search_equipo($conexion, $id) {
     // 2. Devolver la variable $consulta
     return $consulta->fetchAll()[0];
 }
-function get_equipos($conexion, $limit = 10) {
+function getEquipos($conexion) {
     // Vamos a buscar los equipos en la base de datos
     // 1. Crear una variable que se llame $consulta y que sea igual a mysqli_query()
     //    con la consulta para buscar los equipos
@@ -56,18 +64,19 @@ function get_equipos($conexion, $limit = 10) {
 }
     
 
-function update_equipo($conexion, $id, $nombre_equipo, $descripcion) {
+function updateEquipo($conexion,$data) {
     // Vamos a actualizar un equipo en la base de datos
     // 1. Crear una variable que se llame $consulta y que sea igual a mysqli_query()
     //    con la consulta para actualizar un equipo
+    
     $consulta = $conexion->prepare("UPDATE equipos SET nombre_equipo=:nombre_equipo, descripcion=:descripcion WHERE id=:id");
-    $consulta->bindParam(':nombre_equipo', $nombre_equipo);
-    $consulta->bindParam(':descripcion', $descripcion);
-    $consulta->bindParam(':id', $id);
+    $consulta->bindParam(':nombre_equipo', $data['nombre_equipo']);
+    $consulta->bindParam(':descripcion', $data['descripcion']);
+    $consulta->bindParam(':id', $data['id']);
     // 2. Devolver la variable $consulta
     return $consulta->execute();
 }
-function delete_equipo($conexion, $id) {
+function deleteEquipo($conexion, $id) {
     // Vamos a borrar un equipo en la base de datos
     // 1. Crear una variable que se llame $consulta y que sea igual a mysqli_query()
     //    con la consulta para borrar un equipo
@@ -76,5 +85,15 @@ function delete_equipo($conexion, $id) {
     // 2. Devolver la variable $consulta
     return $consulta->execute();
 }
-
+function login($conexion, $data) {
+    // Vamos a buscar un usuario en la base de datos
+    // 1. Crear una variable que se llame $consulta y que sea igual a mysqli_query()
+    //    con la consulta para buscar un usuario
+    $consulta = $conexion->prepare("SELECT * FROM usuarios WHERE user=:nombre_usuario AND password=:password");
+    $consulta->bindParam(':nombre_usuario', $data['user']);
+    $consulta->bindParam(':password', $data['password']);
+    $consulta->execute();
+    // 2. Devolver la variable $consulta
+    return $consulta->fetchAll();
+}
 ?>
