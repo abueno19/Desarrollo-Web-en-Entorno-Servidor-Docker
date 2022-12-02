@@ -12,7 +12,7 @@ if(isset($_GET['id'])){
     $equipo=getEquiposById($conexion,$id);
 }
 
-if (isset($_POST['modificar']) && $_SESSION['user'] == 'admin') {
+if (isset($_POST['modificar']) && $_SESSION['perfil'] == 'admin') {
     $data["nombre_equipo"] = $_POST['nombre_equipo'];
     $data["descripcion"] = $_POST['descripcion'];
     $data["id"] = $_POST['id'];
@@ -43,6 +43,7 @@ if (isset($_SESSION['user'])) {
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
+        
     <?php
     // Vamos a mostrar un menu para modificar un equipo
     echo "<h2>Modificar Equipo</h2>";

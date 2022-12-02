@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $conexion = conexion(HOST, USER, PASSWORD, DATABASE);
 
-if (isset($_POST['add']) && $_SESSION['user'] == 'admin') {
+if (isset($_POST['add']) && $_SESSION['perfil'] == 'admin') {
     $data["nombre_equipo"] = $_POST['nombre_equipo'];
     $data["descripcion"] = $_POST['descripcion'];
     $add_equipo = addEquipo($conexion, $data);

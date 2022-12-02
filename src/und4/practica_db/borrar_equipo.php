@@ -7,7 +7,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 // vamos a borrar el equipo por la id que nos llega por GET
 $conexion = conexion(HOST, USER, PASSWORD, DATABASE);
-if (isset($_POST['id']) && $_SESSION['user'] == 'admin') {
+if (isset($_POST['id']) && $_SESSION['perfil'] == 'admin') {
     $id = $_POST['id'];
     $borrar_equipo = deleteEquipo($conexion, $id);
     if ($borrar_equipo) {
@@ -26,6 +26,10 @@ if (isset($_SESSION['user'])) {
     echo "<h2>Usuario no registrado</h2>";
     echo "<a href='login.php'><button>Login</button></a>";
 }
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $equipo = getEquiposById($conexion, $id);
+}
 
 
 ?>
@@ -43,6 +47,7 @@ if (isset($_SESSION['user'])) {
     <!-- Formulario para confirmar que quieres borrar ese equipo -->
     <form method="POST">
         <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
+        <?php echo "<h2>¿Estas seguro de que quieres borrar el equipo " . $equipo["nombre_equipo"] . "?</h2>"; ?>
         <input type="submit" name="borrar" value="borrar">
 
 </body>

@@ -14,6 +14,7 @@ if (isset($_POST['login'])) {
     $conexion = conexion(HOST, USER, PASSWORD, DATABASE);
     $login = login($conexion, $data);
     if ($login) {
+        $_SESSION["perfil"] = "admin";
         $_SESSION['user'] = $user;
         header("Location: index.php");
     } else {
