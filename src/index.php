@@ -106,6 +106,13 @@ $ejercicios_array=array(
             )
         ),
     ),
+    array("und7"=>array(
+        "Bloque1"=>array(
+            array("Ejercicio1"=>
+            array("Titulo"=>"Actividad 1","Enlace"=>"./und7/Ejercicio1","Descripcion"=>"Vista-controlador ejemplo1","Archivo"=>"act1.php")),
+            )
+        ),
+    ),
 
     
     
