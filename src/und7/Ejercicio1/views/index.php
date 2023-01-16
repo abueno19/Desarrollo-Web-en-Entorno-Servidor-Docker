@@ -8,6 +8,6 @@
     </head>
     <body>
     <h1>Hola mundo</h1>
-    <?php echo $data["mesage"];?>
+    <?php echo $data["message"];?>
     </body>
 </html>
