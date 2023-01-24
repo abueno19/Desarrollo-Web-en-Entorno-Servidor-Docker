@@ -5,7 +5,7 @@ use PDO, PDOException;
 abstract class DBAbstractModel
 {
     private static $db_host = DBHOST;
-    private static $db_user = DBUSER;
+    private static $db_user = 1;
     private static $db_pass = DBPASS;
     private static $db_name = DBNAME;
     private static $db_port = DBPORT;
@@ -57,7 +57,7 @@ abstract class DBAbstractModel
             $this->open_connection();
             print_r($this->query);
             $this->conn->query($this->query);
-            self:
+            // self:
             $this->close_connection();
         } else {
             $this->mensaje = 'Metodo no permitido';

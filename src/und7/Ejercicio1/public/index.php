@@ -15,7 +15,31 @@ array(
     "name"=>"home",
     "path"=>'/^\/saludos\/antonio2$/',
     "action"=>[IndexController::class, "IndexAction"]
+),
+array(
+    "name"=>"home",
+    "path"=>'/^\/add$/',
+    "action"=>[IndexController::class, "IndexAction"]
+),
+array
+(
+    "name"=>"home",
+    "path"=>'/^\/delete$/',
+    "action"=>[IndexController::class, "IndexAction"]
+),
+array
+(
+    "name"=>"home",
+    "path"=>'/^\/update$/',
+    "action"=>[IndexController::class, "IndexAction"]
+),
+array
+(
+    "name"=>"home",
+    "path"=>'/^\/list$/',
+    "action"=>[IndexController::class, "IndexAction"]
 )
+
 );
 $request=str_replace(DIRBASEURL,"",$_SERVER["REQUEST_URI"]);
 $router=$router->match($request);

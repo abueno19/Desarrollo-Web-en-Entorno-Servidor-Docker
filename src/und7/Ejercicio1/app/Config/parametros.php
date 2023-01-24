@@ -1,4 +1,9 @@
 <?php
 define("DIRBASEURL","/und7/Ejercicio1/public/index.php");
 define("DIRPUBLIC","/und7/Ejercicio1/public");
+define("DBHOST","mysql");
+define("DBUSER","myuser");
+define("DBPASS","password");
+define("DBNAME","mydb");
+define("DBPORT","3306");
 ?>
