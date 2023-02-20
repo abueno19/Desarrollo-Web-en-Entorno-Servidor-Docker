@@ -24,19 +24,16 @@ abstract class DBAbstractModel {
 
     protected function open_connection()
     {
-        echo("holi");
         
         $dsn = 'mysql:host=' . self::$db_host . ';'
               . 'dbname=' . self::$db_name . ';' 
               . 'port='  . self::$db_port;
-        echo($dsn);
         try {
           $this->conn = new \PDO($dsn, self::$db_user, self::$db_pass,
                                array(\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
           return $this->conn;
         } 
         catch (\PDOException $e) {
-          echo("error");
           printf("Conexión fallida: %s\n", $e->getMessage());
           exit();
       }
@@ -66,7 +63,6 @@ abstract class DBAbstractModel {
     }
 
     protected function get_results_from_query() {
-        // echo("hola");
         $this->open_connection();
         if (($_stmt = $this->conn->prepare($this->query))) {
             #PREG_PATTERN_ORDER flag para especificar como se cargan los resultados en $named.

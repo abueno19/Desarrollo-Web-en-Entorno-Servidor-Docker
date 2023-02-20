@@ -43,7 +43,6 @@ class Contactos extends DBAbstractModel {
     }
 
     public function get($id=''){
-        
         $this->query = "
             SELECT *
             FROM contactos
@@ -68,7 +67,7 @@ class Contactos extends DBAbstractModel {
     public function getAll(){
         
         $this->query = "SELECT * FROM contactos";
-        // echo("hola2");
+        
         //Cargamos los parámetros.
         //Ejecutamos consulta que devuelve registros.
         $this->get_results_from_query();
