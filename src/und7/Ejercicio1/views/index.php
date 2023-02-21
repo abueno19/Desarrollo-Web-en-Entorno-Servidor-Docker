@@ -1,3 +1,3 @@
 <?php
-echo($mensaje);
+echo($data["message"]);
 ?>

@@ -33,11 +33,14 @@ class Contactos extends DBAbstractModel {
 
     public function set($date="") {
 
-        $this->query = "INSERT INTO contactos(nombre, telefono, email)
+        $this->query = "INSERT INTO contactos(name, telefono, email)
                         VALUES(:nombre, :telefono, :email)";
+        // print_r($date);
         $this->parametros['nombre']= $date['nombre'];
         $this->parametros['telefono']=$date['telefono'];
         $this->parametros['email']=$date['email'];
+        // print_r($this->parametros);
+        // print_r($this->parametros);
         $this->get_results_from_query();
         $this->mensaje = 'Contacto agregado correctamente';
     }
@@ -72,6 +75,10 @@ class Contactos extends DBAbstractModel {
         //Cargamos los parámetros.
         //Ejecutamos consulta que devuelve registros.
         $this->get_results_from_query();
+        if (count($this->rows)==0) {
+            $this->mensaje = 'No hay contactos';
+            return;
+        }
         foreach ($this->rows[0] as $propiedad=>$valor) {
             $this->$propiedad = $valor;
         }
@@ -109,10 +116,15 @@ class Contactos extends DBAbstractModel {
         $this->mensaje = 'Contacto editado correctamente';
     }
 
-    public function delete(){
+    public function delete($id=''){
         $this->query = "DELETE FROM contactos WHERE id = :id";
-        $this->parametros['id']=$this->id;
+        $this->parametros['id']= $id;
+        if (!$this->parametros['id']){
+            $this->mensaje = 'No se puede eliminar un contacto sin id';
+            return False;
+        }
         $this->get_results_from_query();
         $this->mensaje = 'Contacto eliminado';
+        return True;
     }
 }

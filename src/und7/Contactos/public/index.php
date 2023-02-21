@@ -5,14 +5,15 @@ require_once "../app/Config/parametros.php";
 use App\Controllers\ApiController;
 use App\Core\Router;
 
-
+// echo("hola");
 $router=new Router();
 $router->add(array(
     "name"=>"home",
-    "path"=>'/^\/api\/contactos$/',
+    "path"=>'/^\/api\/contactos/',
     "action"=>[ApiController::class, "index"]
 
 )
+
 
 );
 $request=str_replace(DIRBASEURL,"",$_SERVER["REQUEST_URI"]);

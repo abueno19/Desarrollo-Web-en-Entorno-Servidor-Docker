@@ -24,12 +24,12 @@ abstract class DBAbstractModel {
 
     protected function open_connection()
     {
-        echo("holi");
+       
         
         $dsn = 'mysql:host=' . self::$db_host . ';'
               . 'dbname=' . self::$db_name . ';' 
               . 'port='  . self::$db_port;
-        echo($dsn);
+        
         try {
           $this->conn = new \PDO($dsn, self::$db_user, self::$db_pass,
                                array(\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));

@@ -110,6 +110,10 @@ $ejercicios_array=array(
         "Bloque1"=>array(
             array("Ejercicio1"=>
             array("Titulo"=>"Actividad 1","Enlace"=>"./und7/Ejercicio1/public","Descripcion"=>"Vista-controlador ejemplo1","Archivo"=>"act1.php")),
+            array("Ejercicio2"=>
+            array("Titulo"=>"Actividad 2","Enlace"=>"./und7/Contactos/public/","Descripcion"=>"Vista-controlador ejemplo2","Archivo"=>"act2.php")),
+            array("Ejercicio3"=>
+            array("Titulo"=>"Actividad 3","Enlace"=>"./und7/Iluminate/public/","Descripcion"=>"Vista-controlador ejemplo3","Archivo"=>"act3.php")),
             )
         ),
     ),

@@ -16,10 +16,12 @@ class ApiController extends BaseController
     private $query;
     private $parametros;
     private $metodo;
+    private $rows;
     public function __construct($metodo, $request) {
         $this->contactos = Contactos::getInstancia();
         $this->request = $request;
         $this->metodo = $metodo;
+        
         
     }
     # Vamos a comprobar que tipo de petición es con un switch.
@@ -33,44 +35,61 @@ class ApiController extends BaseController
         switch ($this->metodo) {
             case 'GET':
                 // echo("hola");
-                $this->get();
+                $this->get($_GET['id']);
                 break;
             case 'POST':
-                $this->post();
+                $this->post($_GET);
                 break;
             case 'PUT':
                 $this->put();
                 break;
             case 'DELETE':
-                $this->delete( $this->request->getGet('id'));
+                $this->delete(  $_GET['id']);
                 break;
         }
     }
     public function get($id = '') {
         if ($id == '') {
             #Vamos a devolver todos los contactos.
-            $this->contactos->getAll();
-            $this->renderHTML('../view/contactos.php', [
-                'contactos' => $this->contactos->rows
-            ]);
+            
+
+            $data=array("message"=>$this->contactos->getAll());
+            if (count($data['message'])==0) {
+                $data['message']="No hay contactos";
+            }
+            
+            $this->renderHTML('../view/contactos.php', $data
+            );
         }else{
             #Vamos a devolver un contacto por id.
-            $this->contactos->get($id);
-            $this->renderHTML('../view/contactos.phpp', [
-                'contacto' => $this->contactos->rows[0]
+            
+            $this->renderHTML('../view/contactos.php', [
+                'message' => $this->contactos->get($_GET['id'])
             ]);
         }
     }
-    public function post() {
-        $this->parametros['nombre'] = $this->request->getPost('nombre');
-        $this->parametros['telefono'] = $this->request->getPost('telefono');
-        $this->parametros['email'] = $this->request->getPost('email');
+    public function post($parametros="") {
+        // $data = (array) json_decode(file_get_contents('php://input'), true);
+        
+        // print_r();
+        // echo("hola");
+        // echo($parametros['nombre']);
+        $this->parametros=$parametros;
+        if (!isset($this->parametros['nombre']) || !isset($this->parametros['telefono']) || !isset($this->parametros['email'])) {
+            $data = (array) json_decode(file_get_contents('php://input'), true);
+            echo("no hay parametros");
+            print_r($data);
+            $this->parametros=$data;
+        }
+            
+        
         $this->contactos->set($this->parametros);
         $this->renderHTML('../view/contactos.php', [
-            'contacto' => $this->contactos->rows[0]
+            'message' => "Se ha creado el contacto de manera adecuada"
         ]);
     }
     public function put() {
+        $this->parametros=$_POST;
         $this->parametros['id'] = $this->request->getPost('id');
         $this->parametros['nombre'] = $this->request->getPost('nombre');
         $this->parametros['telefono'] = $this->request->getPost('telefono');
@@ -81,9 +100,16 @@ class ApiController extends BaseController
         ]); 
     }
     public function delete($id) {
-        $this->contactos->delete($id);
+        
+        $delete=$this->contactos->delete($id);
+        if (!$delete) {
+            $this->renderHTML('../view/contactos.php', [
+                'message' => "No se ha podido eliminar el contacto con id: $id"
+            ]);
+            return;
+        }
         $this->renderHTML('../view/contactos.php', [
-            'contacto' => $this->contactos->rows[0]
+            'message' => "Se ha eliminado el contacto con id: $id"
         ]);
     }
 

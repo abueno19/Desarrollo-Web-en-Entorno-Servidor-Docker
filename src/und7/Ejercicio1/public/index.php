@@ -53,8 +53,8 @@ if($router){
     $actionName=$router["action"][1];
     echo($router["action"][2]);
     $controller=new $controllerName;
-    echo("hola");
-    $controller->$actionName($request);
+    
+    $controller->$actionName("hola como andas");
 }else{
     echo("no route");
     echo("<br>");
