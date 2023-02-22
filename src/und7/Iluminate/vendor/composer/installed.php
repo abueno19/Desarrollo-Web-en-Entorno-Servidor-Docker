@@ -19,6 +19,15 @@
             'reference' => NULL,
             'dev_requirement' => false,
         ),
+        'aura/router' => array(
+            'pretty_version' => '3.2.0',
+            'version' => '3.2.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../aura/router',
+            'aliases' => array(),
+            'reference' => '9c289935e873d6c41fa3e594e6fdfb9c6cffc588',
+            'dev_requirement' => false,
+        ),
         'doctrine/inflector' => array(
             'pretty_version' => 'v1.2.0',
             'version' => '1.2.0.0',
@@ -73,6 +82,24 @@
             'reference' => '429be50660ed8a196e0798e5939760f168ec8ce9',
             'dev_requirement' => false,
         ),
+        'laminas/laminas-diactoros' => array(
+            'pretty_version' => '1.8.7p2',
+            'version' => '1.8.7.0-patch2',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laminas/laminas-diactoros',
+            'aliases' => array(),
+            'reference' => '6991c1af7c8d2c8efee81b22ba97024781824aaa',
+            'dev_requirement' => false,
+        ),
+        'laminas/laminas-zendframework-bridge' => array(
+            'pretty_version' => '1.1.1',
+            'version' => '1.1.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laminas/laminas-zendframework-bridge',
+            'aliases' => array(),
+            'reference' => '6ede70583e101030bcace4dcddd648f760ddf642',
+            'dev_requirement' => false,
+        ),
         'nesbot/carbon' => array(
             'pretty_version' => '1.39.1',
             'version' => '1.39.1.0',
@@ -89,6 +116,30 @@
             'install_path' => __DIR__ . '/../psr/container',
             'aliases' => array(),
             'reference' => 'b7ce3b176482dbbc1245ebf52b181af44c2cf55f',
+            'dev_requirement' => false,
+        ),
+        'psr/http-message' => array(
+            'pretty_version' => '1.0.1',
+            'version' => '1.0.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/http-message',
+            'aliases' => array(),
+            'reference' => 'f6561bf28d520154e4b0ec72be95418abe6d9363',
+            'dev_requirement' => false,
+        ),
+        'psr/http-message-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0',
+            ),
+        ),
+        'psr/log' => array(
+            'pretty_version' => '1.1.4',
+            'version' => '1.1.4.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/log',
+            'aliases' => array(),
+            'reference' => 'd49695b909c3b7628b6289db5479a1c204601f11',
             'dev_requirement' => false,
         ),
         'psr/simple-cache' => array(
@@ -122,6 +173,12 @@
             'dev_requirement' => false,
             'replaced' => array(
                 0 => '<5.5.33',
+            ),
+        ),
+        'zendframework/zend-diactoros' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '~1.8.7.0',
             ),
         ),
     ),
