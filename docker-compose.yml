@@ -39,6 +39,9 @@ services:
       - 3306
     ports:
       - 3306:3306
+    # volumes:
+    #   - ~/code/docker-development/logs/mysql:/var/log/mysql
+      # - ~/code/docker-development/mysql/config:/etc/mysql
 
   mysql-data:    
     build: ./mysql/
